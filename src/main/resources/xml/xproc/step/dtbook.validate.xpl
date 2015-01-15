@@ -33,7 +33,11 @@
     <p:import href="http://www.daisy.org/pipeline/modules/validation-utils/library.xpl"/>
 
     <px:message message="Validating DTBook according to DTBook specification..."/>
+    <px:message message="dtbook: '$1'">
+        <p:with-option name="param1" select="$dtbook"/>
+    </px:message>
     <px:dtbook-validator name="validate.input-dtbook.generic">
+        <p:log port="validation-status" href="file:/tmp/dtbook-validator.validation-status.xml"/>
         <p:with-option name="input-dtbook" select="$dtbook"/>
         <p:with-option name="check-images" select="$check-images"/>
     </px:dtbook-validator>

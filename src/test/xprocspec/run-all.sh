@@ -14,7 +14,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # The location of calabash and xprocspec can be changed in the variables below.
 
 CALABASH="`echo ~/xmlcalabash-1.0.18-95/calabash.jar`"
-XPROCSPEC="`echo ~/xprocspec/src/main/resources/content/xml/xproc/xprocspec.xpl`"
+XPROCSPEC="`echo ~/xprocspec/xprocspec/src/main/resources/content/xml/xproc/xprocspec.xpl`"
 TEMP_DIR="file:/tmp/"
 RESULT_DIR="$DIR/report/"
 

@@ -19,6 +19,41 @@
     <p:import href="http://www.daisy.org/pipeline/modules/file-utils/library.xpl"/>
     <p:import href="http://www.daisy.org/pipeline/modules/common-utils/library.xpl"/>
 
+    <p:declare-step type="pxi:copy-resource">
+        <!--
+            Temporary fix for https://github.com/daisy/pipeline-modules-common/issues/76
+            Replace with simply px:copy-resource when it's fixed
+        -->
+        <p:output port="result"/>
+        <p:option name="href" required="true"/>
+        <p:option name="target" required="true"/>
+        <p:option name="fail-on-error" select="'true'"/>
+
+        <px:copy-resource name="copy-resource.copy">
+            <p:with-option name="href" select="$href"/>
+            <p:with-option name="target" select="$target"/>
+            <p:with-option name="fail-on-error" select="$fail-on-error"/>
+        </px:copy-resource>
+
+        <p:choose>
+            <p:when test="replace($target,'.*/','') = replace(text(),'.*/','')">
+                <p:identity/>
+            </p:when>
+            <p:otherwise>
+                <px:move name="copy-resource.move">
+                    <p:with-option name="href" select="text()"/>
+                    <p:with-option name="target" select="$target"/>
+                </px:move>
+                <p:identity>
+                    <p:input port="source">
+                        <p:pipe port="result" step="copy-resource.move"/>
+                    </p:input>
+                </p:identity>
+            </p:otherwise>
+        </p:choose>
+
+    </p:declare-step>
+
     <p:variable name="href" select="resolve-uri((//d:file[@media-type='application/x-dtbook+xml'])[1]/@href,base-uri(/))"/>
     <p:variable name="doc-base" select="base-uri(/)">
         <p:inline>
@@ -68,36 +103,37 @@
     <px:mkdir name="mkdir">
         <p:with-option name="href" select="concat($temp-dir,'css/fonts/opendyslexic/')"/>
     </px:mkdir>
-    <px:copy-resource name="store1" cx:depends-on="mkdir">
+    <pxi:copy-resource name="store1" cx:depends-on="mkdir">
         <p:with-option name="href" select="resolve-uri('../../../css/accessibility.css',$doc-base)"/>
         <p:with-option name="target" select="concat($temp-dir,'css/')"/>
-    </px:copy-resource>
-    <px:copy-resource name="store2" cx:depends-on="mkdir">
+    </pxi:copy-resource>
+    <pxi:copy-resource name="store2" cx:depends-on="mkdir">
         <p:with-option name="href" select="resolve-uri('../../../css/fonts/opendyslexic/OpenDyslexic-Regular.otf',$doc-base)"/>
         <p:with-option name="target" select="concat($temp-dir,'css/fonts/opendyslexic/')"/>
-    </px:copy-resource>
-    <px:copy-resource name="store3" cx:depends-on="mkdir">
+    </pxi:copy-resource>
+    <pxi:copy-resource name="store3" cx:depends-on="mkdir">
         <p:with-option name="href" select="resolve-uri('../../../css/fonts/opendyslexic/OpenDyslexic-Italic.otf',$doc-base)"/>
         <p:with-option name="target" select="concat($temp-dir,'css/fonts/opendyslexic/')"/>
-    </px:copy-resource>
-    <px:copy-resource name="store4" cx:depends-on="mkdir">
+    </pxi:copy-resource>
+    <pxi:copy-resource name="store4" cx:depends-on="mkdir">
         <p:with-option name="href" select="resolve-uri('../../../css/fonts/opendyslexic/OpenDyslexic-Bold.otf',$doc-base)"/>
         <p:with-option name="target" select="concat($temp-dir,'css/fonts/opendyslexic/')"/>
-    </px:copy-resource>
-    <px:copy-resource name="store5" cx:depends-on="mkdir">
+    </pxi:copy-resource>
+    <pxi:copy-resource name="store5" cx:depends-on="mkdir">
         <p:with-option name="href" select="resolve-uri('../../../css/fonts/opendyslexic/OpenDyslexic-BoldItalic.otf',$doc-base)"/>
         <p:with-option name="target" select="concat($temp-dir,'css/fonts/opendyslexic/')"/>
-    </px:copy-resource>
-    <px:copy-resource name="store6" cx:depends-on="mkdir">
+    </pxi:copy-resource>
+    <pxi:copy-resource name="store6" cx:depends-on="mkdir">
         <p:with-option name="href" select="resolve-uri('../../../css/fonts/opendyslexic/OpenDyslexicMono-Regular.otf',$doc-base)"/>
         <p:with-option name="target" select="concat($temp-dir,'css/fonts/opendyslexic/')"/>
-    </px:copy-resource>
-    <px:copy-resource name="store7" cx:depends-on="mkdir">
+    </pxi:copy-resource>
+    <pxi:copy-resource name="store7" cx:depends-on="mkdir">
         <p:with-option name="href" select="resolve-uri('../../../css/fonts/opendyslexic/LICENSE.txt',$doc-base)"/>
         <p:with-option name="target" select="concat($temp-dir,'css/fonts/opendyslexic/')"/>
-    </px:copy-resource>
+    </pxi:copy-resource>
     <!-- TODO: add ASCIIMathML.js if there are asciimath elements -->
     <p:identity name="store-dependency">
+        <p:log port="result" href="file:/tmp/store-resources.xml"/>
         <p:input port="source">
             <p:pipe port="result" step="store1"/>
             <p:pipe port="result" step="store2"/>
