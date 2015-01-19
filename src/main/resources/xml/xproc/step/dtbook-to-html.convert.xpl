@@ -31,26 +31,11 @@
 
         <px:copy-resource name="copy-resource.copy">
             <p:with-option name="href" select="$href"/>
-            <p:with-option name="target" select="$target"/>
+            <p:with-option name="target" select="if (matches($target,'/$'))
+                                                 then resolve-uri(replace($href,'^.*/([^/]*)$','$1'), $target)
+                                                 else $target"/>
             <p:with-option name="fail-on-error" select="$fail-on-error"/>
         </px:copy-resource>
-
-        <p:choose>
-            <p:when test="replace($target,'.*/','') = replace(text(),'.*/','')">
-                <p:identity/>
-            </p:when>
-            <p:otherwise>
-                <px:move name="copy-resource.move">
-                    <p:with-option name="href" select="text()"/>
-                    <p:with-option name="target" select="$target"/>
-                </px:move>
-                <p:identity>
-                    <p:input port="source">
-                        <p:pipe port="result" step="copy-resource.move"/>
-                    </p:input>
-                </p:identity>
-            </p:otherwise>
-        </p:choose>
 
     </p:declare-step>
 
