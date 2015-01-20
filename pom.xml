@@ -26,6 +26,254 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
+    <!--
+        FIXME: this belongs in a parent POM
+    -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.daisy.pipeline</groupId>
+                <artifactId>framework-bom</artifactId>
+                <version>1.8</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.daisy.pipeline.modules</groupId>
+                <artifactId>common-utils-aggregator</artifactId>
+                <version>1.8</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.daisy.pipeline.modules</groupId>
+                <artifactId>script-utils-aggregator</artifactId>
+                <version>1.8</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.daisy.pipeline.modules</groupId>
+                <artifactId>scripts-aggregator</artifactId>
+                <version>1.8</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--
+                This is a patched version of xproc-engine-daisy-pipeline v1.8 that imports the
+                correct framework-bom. See
+                https://github.com/daisy/xproc-maven-plugin/tree/xproc-engine-daisy-pipeline_v1.8-p1
+            -->
+            <dependency>
+                <groupId>org.daisy.maven</groupId>
+                <artifactId>xproc-engine-daisy-pipeline</artifactId>
+                <version>1.8-p1</version>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-jdk14</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!--
+                A newer version of calabash-adapter is needed. See
+                https://github.com/daisy/pipeline-framework/pull/69. Note that the change must be
+                based on 2.0.0 in order to be compatible with v1.8!!
+            -->
+            <dependency>
+                <groupId>org.daisy.pipeline</groupId>
+                <artifactId>calabash-adapter</artifactId>
+                <version>2.0.0-p1-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.daisy.xprocspec</groupId>
+                <artifactId>xprocspec</artifactId>
+                <version>1.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.daisy.maven</groupId>
+                <artifactId>xprocspec-runner</artifactId>
+                <version>1.0.0</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.google.guava</groupId>
+                        <artifactId>guava</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.daisy.pipeline</groupId>
+                <artifactId>pax-exam-helper</artifactId>
+                <version>1.8-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <!--
+        for javax.persistence
+    -->
+    <repositories>
+        <repository>
+            <id>eclipselink</id>
+            <name>EclipseLink Releases</name>
+            <url>http://download.eclipse.org/rt/eclipselink/maven.repo</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!--
+            OSGi runtime dependencies
+        -->
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>asciimath-utils</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>common-utils</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>dtbook-utils</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>dtbook-validator</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>epub3-nav-utils</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>epub3-ocf-utils</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>epub3-pub-utils</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>epubcheck-adapter</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>file-utils</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>fileset-utils</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>html-utils</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>mediatype-utils</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>validation-utils</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>zip-utils</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!--
+            FIXME: this belongs in the epub3-pub-utils POM (see issue https://github.com/daisy/pipeline-tasks/issues/23)
+        -->
+        <dependency>
+            <groupId>org.daisy.pipeline.modules</groupId>
+            <artifactId>mediaoverlay-utils</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <!--
+            FIXME: this belongs in the file-utils POM (see issue https://github.com/daisy/pipeline-tasks/issues/23)
+        -->
+        <dependency>
+            <groupId>org.daisy.libs</groupId>
+            <artifactId>saxon-he</artifactId>
+            <version>9.5.1.5</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient-osgi</artifactId>
+            <version>4.2.5</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore-osgi</artifactId>
+            <version>4.2.4</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline</groupId>
+            <artifactId>woodstox-osgi-adapter</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline</groupId>
+            <artifactId>modules-registry</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>javax.persistence</artifactId>
+            <version>2.0.3</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!--
+            FIXME: this is currectly excluded from the commons-compress dependency, but because it
+            is not an *optional* OSGi dependency of commons-compress, we still need it.
+        -->
+        <dependency>
+            <groupId>org.tukaani</groupId>
+            <artifactId>xz</artifactId>
+            <version>1.0</version>
+            <scope>runtime</scope>
+        </dependency>
+        <!--
+            test dependencies
+        -->
+        <dependency>
+            <groupId>org.daisy.maven</groupId>
+            <artifactId>xproc-engine-daisy-pipeline</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.xprocspec</groupId>
+            <artifactId>xprocspec</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.maven</groupId>
+            <artifactId>xprocspec-runner</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.daisy.pipeline</groupId>
+            <artifactId>pax-exam-helper</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
     <build>
         <resources>
             <resource>
@@ -43,26 +291,18 @@
 
         <plugins>
 
-            <!-- XProc testing using xprocspec and xproc-maven-plugin -->
+            <!-- XProc testing using xprocspec and xproc-maven-plugin through Pax-Exam -->
             <plugin>
-                <groupId>org.daisy.maven</groupId>
-                <artifactId>xproc-maven-plugin</artifactId>
-                <version>1.0.0</version>
+                <groupId>org.ops4j.pax.exam</groupId>
+                <artifactId>maven-paxexam-plugin</artifactId>
                 <executions>
                     <execution>
-                        <phase>test</phase>
+                        <id>generate-depends-file</id>
                         <goals>
-                            <goal>xprocspec</goal>
+                            <goal>generate-depends-file</goal>
                         </goals>
                     </execution>
                 </executions>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.daisy.maven</groupId>
-                        <artifactId>xproc-engine-calabash</artifactId>
-                        <version>1.0.0</version>
-                    </dependency>
-                </dependencies>
             </plugin>
 
             <!-- XSLT testing enabled by default -->
