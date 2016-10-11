@@ -506,7 +506,7 @@
             <level1 id="d910e694" class="chapter">
                 <pagenum id="page_5" page="normal">5</pagenum>
                 <h1 id="d910e696">1. Research questions</h1>
-                <p xml:space="preserve"><code xml:space="preserve">
+                <p xml:space="preserve"><code>
     public static void main(String[] args) {
         ...
     }
