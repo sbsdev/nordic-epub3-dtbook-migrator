@@ -1054,7 +1054,7 @@
             <html:dfn/>
         </x:context>
         <x:expect label="the resulting element should be a dfn">
-            <dtbook:span class="definition"/>
+            <dtbook:dfn/>
         </x:expect>
     </x:scenario>
 
