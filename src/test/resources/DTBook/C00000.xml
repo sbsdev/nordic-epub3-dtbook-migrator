@@ -212,6 +212,7 @@
                 <level2 id="d910e124">
                     <h2 id="d910e126">List of contents</h2>
                     <table id="dtb21">
+                    <tbody>
                         <tr id="dtb22">
                             <td rowspan="1" colspan="1">
                                 <span id="dtb23">Preface</span>
@@ -461,6 +462,7 @@
                                 <span id="dtb111">29</span>
                             </td>
                         </tr>
+                    </tbody>
                     </table>
                     <pagenum id="page_4" page="front">iv</pagenum>
                 </level2>
