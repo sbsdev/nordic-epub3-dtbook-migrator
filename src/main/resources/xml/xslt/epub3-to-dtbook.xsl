@@ -484,22 +484,17 @@
                     <xsl:apply-templates select="node()"/>
                 </xsl:element>
             </xsl:when>
-            <xsl:when test="exists(*[not(f:is-inline(.))])">
+            <xsl:otherwise>
                 <epigraph>
-                    <xsl:call-template name="f:attlist.epigraph"/>
+                    <xsl:call-template name="f:attrs">
+                        <xsl:with-param name="except-classes" select="'epigraph'" tunnel="yes"/>
+                    </xsl:call-template>
                     <xsl:apply-templates select="node()"/>
                 </epigraph>
-            </xsl:when>
-            <xsl:otherwise>
-                <p>
-                    <xsl:call-template name="f:attlist.epigraph"/>
-                    <xsl:apply-templates select="node()"/>
-                </p>
             </xsl:otherwise>
         </xsl:choose>
     </xsl:template>
 
-    <!-- <epigraph> is not allowed in nordic DTBook. Using p instead with a epigraph class. -->
     <xsl:template name="f:attlist.epigraph">
         <xsl:call-template name="f:attrs">
             <xsl:with-param name="classes" select="'epigraph'" tunnel="yes"/>

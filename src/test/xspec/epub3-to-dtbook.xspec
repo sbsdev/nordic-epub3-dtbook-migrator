@@ -795,7 +795,7 @@
                 <html:aside epub:type="epigraph"/>
             </x:context>
             <x:expect label="the resulting element should be a p element">
-                <dtbook:p class="epigraph"/>
+                <dtbook:epigraph/>
             </x:expect>
         </x:scenario>
         
@@ -804,7 +804,7 @@
                 <html:blockquote epub:type="epigraph" class="epigraph other-class"/>
             </x:context>
             <x:expect label="the result should be as expected">
-                <dtbook:p class="epigraph other-class"/>
+                <dtbook:epigraph class="other-class"/>
             </x:expect>
         </x:scenario>
         
@@ -813,7 +813,7 @@
                 <html:blockquote epub:type="epigraph" class="epigraph"><html:p>foo</html:p></html:blockquote>
             </x:context>
             <x:expect label="the result should be as expected">
-                <dtbook:epigraph class="epigraph"><dtbook:p>foo</dtbook:p></dtbook:epigraph>
+                <dtbook:epigraph><dtbook:p>foo</dtbook:p></dtbook:epigraph>
             </x:expect>
         </x:scenario>
         
@@ -822,7 +822,7 @@
                 <html:blockquote epub:type="epigraph" class="epigraph"><html:p epub:type="epigraph" class="epigraph other-class">foo</html:p></html:blockquote>
             </x:context>
             <x:expect label="the result should be as expected">
-                <dtbook:epigraph class="epigraph"><dtbook:p class="epigraph other-class">foo</dtbook:p></dtbook:epigraph>
+                <dtbook:epigraph><dtbook:epigraph class="other-class">foo</dtbook:epigraph></dtbook:epigraph>
             </x:expect>
         </x:scenario>
         
@@ -831,7 +831,7 @@
                 <html:p epub:type="epigraph" class="epigraph"/>
             </x:context>
             <x:expect label="the result should be as expected">
-                <dtbook:p class="epigraph"/>
+                <dtbook:epigraph/>
             </x:expect>
         </x:scenario>
         
@@ -840,7 +840,7 @@
                 <html:p epub:type="epigraph" class="epigraph"><html:p epub:type="epigraph" class="epigraph">foo</html:p></html:p>
             </x:context>
             <x:expect label="the result should be as expected">
-                <dtbook:epigraph class="epigraph"><dtbook:p class="epigraph">foo</dtbook:p></dtbook:epigraph>
+                <dtbook:epigraph><dtbook:epigraph>foo</dtbook:epigraph></dtbook:epigraph>
             </x:expect>
         </x:scenario>
         
