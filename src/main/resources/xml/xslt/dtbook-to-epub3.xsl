@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:f="http://www.daisy.org/ns/pipeline/internal-functions"
+<xsl:stylesheet xmlns:f="http://www.daisy.org/pipeline/modules/nordic-epub3-dtbook-migrator/dtbook-to-epub3.xsl"
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:dtbook="http://www.daisy.org/z3986/2005/dtbook/"
                 xmlns:epub="http://www.idpf.org/2007/ops"
