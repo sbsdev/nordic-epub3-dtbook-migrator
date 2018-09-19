@@ -46,3 +46,31 @@ p:hover, li:hover {
 
 }
 
+/* SBS specific changes */
+
+.poem{
+  margin-left:3em;
+}
+.linegroup + .linegroup{
+  margin-top:3em;
+}
+
+.emptyline{
+  margin-top:3em;
+  visibility:hidden;
+}
+
+.bridgehead{
+  font-weight:bold;
+}
+
+.byline, span[epub|type="z3998:author"]{
+  display:block;
+}
+
+span[epub|type="pagebreak"], div[epub|type="pagebreak"]{
+  display:block;
+  margin-top: 3em;
+  margin-bottom: 3em;
+}
+
