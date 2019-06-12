@@ -2664,7 +2664,7 @@
                 </dtbook:list>
             </x:context>
             <x:expect label="the type of list should be detected, the list markers removed and the value should be correct">
-                <html:ol id="...">
+                <html:ol id="..." class="preformatted">
                     <html:li id="..." value="2">Halten Sie
 		  Sie es tunlichst, der Öffentlichkeit jene Hautfladen auch bekannt als Bingofladen, die unter den Oberarmen hängen, zuzumuten. Dasselbe gilt für die Röllchen unter der Achsel, zwischen Oberarm und Oberkörper.</html:li>
                 </html:ol>
