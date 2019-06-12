@@ -2823,8 +2823,8 @@
                         </html:tr>
                     </html:thead>
                     <html:tbody>
-                        <html:tr><html:td>td #1</html:td></html:tr>
-                        <html:tr><html:td><html:span epub:type="pagebreak" title="3"/><html:span epub:type="pagebreak" title="4"/>td #2</html:td></html:tr>
+                        <html:tr><html:td>td #1<html:span epub:type="pagebreak" title="3"/><html:span epub:type="pagebreak" title="4"/></html:td></html:tr>
+                        <html:tr><html:td>td #2</html:td></html:tr>
                     </html:tbody>
                 </html:table>
                 <html:div epub:type="pagebreak" title="5"/>
