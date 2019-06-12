@@ -11,11 +11,11 @@
     </parent>
     
     <groupId>org.daisy.pipeline.modules</groupId>
-    <artifactId>nordic-epub3-dtbook-migrator</artifactId>
+    <artifactId>sbs-epub3-dtbook-migrator</artifactId>
     <version>1.4.1-SNAPSHOT</version>
     <packaging>bundle</packaging>
 
-    <name>DAISY Pipeline 2 module :: Nordic EPUB3/DTBook Migrator</name>
+    <name>DAISY Pipeline 2 module :: SBS EPUB3/DTBook Migrator</name>
     <description>A DAISY Pipeline 2 module containing scripts for converting between and validating DTBook, HTML and EPUB3 according to nordic markup guidelines.</description>
     
     <properties>
@@ -26,7 +26,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <expose-services>
-            org.daisy.pipeline.modules.impl.Module_nordic_epub3_dtbook_migrator,
+            org.daisy.pipeline.modules.impl.Module_sbs_epub3_dtbook_migrator,
             org.daisy.pipeline.script.impl.XProcScript_nordic_dtbook_to_epub3,
             org.daisy.pipeline.script.impl.XProcScript_nordic_dtbook_to_html,
             org.daisy.pipeline.script.impl.XProcScript_nordic_dtbook_validate,
