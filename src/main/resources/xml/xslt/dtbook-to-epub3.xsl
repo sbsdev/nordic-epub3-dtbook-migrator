@@ -1116,9 +1116,6 @@
     <xsl:template name="f:imggroup.image">
         <xsl:param name="content" required="yes"/>
 
-        <xsl:apply-templates select="$content[self::dtbook:img]"/>
-        <xsl:apply-templates select="$content[self::node() and not(self::dtbook:img or self::dtbook:caption)]"/>
-
         <xsl:variable name="image-captions" select="$content[self::dtbook:caption]"/>
         <xsl:choose>
             <xsl:when test="count($image-captions) = 1">
@@ -1140,6 +1137,9 @@
                 </figcaption>
             </xsl:when>
         </xsl:choose>
+
+        <xsl:apply-templates select="$content[self::dtbook:img]"/>
+        <xsl:apply-templates select="$content[self::node() and not(self::dtbook:img or self::dtbook:caption)]"/>
     </xsl:template>
 
     <xsl:template name="f:attlist.imggroup">
