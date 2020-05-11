@@ -899,9 +899,9 @@
     <!-- test not needed (attrs) -->
 
     <!-- byline -->
-    <x:scenario label="when processing a span element with a 'byline' class">
+    <x:scenario label="when processing a p element with a 'byline' class">
         <x:context>
-            <html:span class="byline"/>
+            <html:p class="byline"/>
         </x:context>
         <x:expect label="the resulting element should be a byline and the byline class should be removed">
             <dtbook:byline/>
