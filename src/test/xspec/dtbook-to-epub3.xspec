@@ -746,14 +746,14 @@
                 <dtbook:img id="img2" src="img.jpg"/>
             </dtbook:imggroup>
         </x:context>
-        <x:expect label="the render should become a class and imgref is replaced by the longdesc attribute on the corresponding img element.">
+        <x:expect label="the render should become a class and imgref is replaced by the aria-describedby attribute on the corresponding img element.">
             <html:figure id="..." class="image-series">
                 <html:aside id="prodnote" epub:type="z3998:production" class="prodnote render-optional"/>
                 <html:figure class="image">
-                    <html:img id="img1" src="images/img.jpg" longdesc="#prodnote" alt="image"/>
+                    <html:img id="img1" src="images/img.jpg" aria-describedby="prodnote" alt="image"/>
                 </html:figure>
                 <html:figure class="image">
-                    <html:img id="img2" src="images/img.jpg" longdesc="#prodnote" alt="image"/>
+                    <html:img id="img2" src="images/img.jpg" aria-describedby="prodnote" alt="image"/>
                 </html:figure>
             </html:figure>
         </x:expect>
@@ -1433,7 +1433,7 @@
             </x:context>
             <x:expect label="the resulting element should be a figure with class='image'">
                 <html:figure id="..." class="image">
-                    <html:img src="images/img.jpg" id="img1" longdesc="#prodnote1" alt="image"/>
+                    <html:img src="images/img.jpg" id="img1" aria-describedby="prodnote1" alt="image"/>
                     <html:aside id="prodnote1" epub:type="z3998:production" class="prodnote"/>
                     <html:div epub:type="pagebreak" title="1"/>
                     <html:figcaption id="caption1"/>
@@ -1467,14 +1467,13 @@
             <x:expect label="the resulting element should be a figure with class='image-series'">
                 <html:figure id="..." class="image-series">
                     <html:figure class="image">
-                        <html:img src="images/img.jpg" id="img1" longdesc="#prodnote1" alt="image"/>
                         <html:aside id="prodnote1" epub:type="z3998:production" class="prodnote"/>
                         <html:figcaption id="caption1">
                             <html:p/>
                         </html:figcaption>
+                        <html:img src="images/img.jpg" id="img1" aria-describedby="prodnote1" alt="image"/>
                     </html:figure>
                     <html:figure class="image">
-                        <html:img src="images/img.jpg" id="img2" longdesc="#prodnote2" alt="image"/>
                         <html:aside id="prodnote2" epub:type="z3998:production" class="prodnote"/>
                         <html:figcaption>
                             <html:div id="caption2">
@@ -1484,6 +1483,7 @@
                                 <html:p/>
                             </html:div>
                         </html:figcaption>
+                        <html:img src="images/img.jpg" id="img2" aria-describedby="prodnote2" alt="image"/>
                     </html:figure>
                     <html:figure class="image">
                         <html:img src="images/img.jpg" id="img3" alt="image"/>
@@ -3037,13 +3037,13 @@
                 </dtbook:tbody>
             </dtbook:table>
         </x:context>
-        <x:expect label="the imgref should be replaced by the longdesc attribute on the corresponding img element.">
+        <x:expect label="the imgref should be replaced by the  aria-describedby attribute on the corresponding img element.">
             <html:table id="...">
                 <html:caption id="caption"><!-- COMMENT --></html:caption>
                 <html:tbody>
                     <html:tr>
                         <html:td>
-                            <html:img id="img" src="images/img.jpg" longdesc="#caption" alt="image"/>
+                            <html:img id="img" src="images/img.jpg" aria-describedby="caption" alt="image"/>
                         </html:td>
                     </html:tr>
                 </html:tbody>
