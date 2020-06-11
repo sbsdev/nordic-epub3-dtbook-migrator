@@ -1010,7 +1010,7 @@
             <x:context>
                 <dtbook:poem/>
             </x:context>
-            <x:expect label="the resulting element should also be a div with an added epub:type of z3998:poem">
+            <x:expect label="the resulting element should be a div with an added epub:type of z3998:poem">
                 <html:div id="..." epub:type="z3998:poem" class="poem"/>
             </x:expect>
         </x:scenario>
