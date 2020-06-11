@@ -1408,7 +1408,7 @@
             <dtbook:img src="img.jpg#target" alt="alt text" longdesc="#image-description" height="100" width="100" id="id"/>
         </x:context>
         <x:expect label="the resulting element should be a img">
-            <html:img src="images/img.jpg#target" alt="alt text" longdesc="#image-description" height="100" width="100" id="id"/>
+            <html:img src="images/img.jpg#target" alt="alt text" height="100" width="100" id="id"/>
         </x:expect>
     </x:scenario>
 
