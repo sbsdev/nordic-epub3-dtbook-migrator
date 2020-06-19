@@ -2633,6 +2633,10 @@
                     <!-- A single image -->
                     <ref name="attlist.figure.image"/>
                     
+                    <optional>
+                        <ref name="caption.figure"/> <!-- figcaption -->
+                    </optional>
+
                     <ref name="img"/> <!-- img -->
                     
                     <zeroOrMore>
