@@ -541,9 +541,12 @@
             </attribute>
         </optional>
         <optional>
+	  <choice>
             <attribute name="name">
                 <data type="NMTOKEN"/>
             </attribute>
+            <attribute name="property"/>
+	  </choice>
         </optional>
         <attribute name="content"/>
     </define>
